@@ -1,14 +1,10 @@
 package com.example.fakefacebook.service;
-
-
 import com.example.fakefacebook.entity.Post;
-import com.example.fakefacebook.entity.User;
 import com.example.fakefacebook.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import javax.persistence.Entity;
 import java.util.List;
 
 

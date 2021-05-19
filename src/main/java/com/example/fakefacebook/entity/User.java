@@ -10,11 +10,9 @@ public class User {
     private long id;
 
     @Column(name="username")
-    private String name;
+    public String name;
     private String address;
     private String img;
-
-
 
     public String getImg() {
         return img;
@@ -25,10 +23,6 @@ public class User {
     }
 
     private String password;
-
-
-
-    //salt field created for saving and querying the database
 
     private String salt;
 

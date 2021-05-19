@@ -1,5 +1,4 @@
 package com.example.fakefacebook.controller;
-
 import com.example.fakefacebook.entity.User;
 import com.example.fakefacebook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -54,8 +52,6 @@ public class UserController {
         return "redirect:/failedsignin";
     }
 
-
-
     @GetMapping("/userLoggedIn/{id}")
     public String userLoggedIn(@PathVariable("id") Long id,
                                Model model) {
@@ -65,13 +61,10 @@ public class UserController {
         return "profile";
     }
 
-
     @GetMapping("/signup")
     public String signUpView(@ModelAttribute("user") User user) {
         return "signup";
     }
-
-
 
     /***************************** DELETE MY ACCOUNT *********************************/
 
@@ -117,6 +110,23 @@ public class UserController {
     /****************************** ADMIN VIEW - gives admin ability to edit and delete users from database ****************************************/
     //Endpoint to handle view which shows a table with
     //all user entries in the database.
+
+//    @PostMapping("/loginAdmin")
+//    public String loginAdmin(@RequestParam("name") String name,
+//                            @RequestParam("password") String password
+//    ) {
+//
+//        if (userService.authUser(name, password)) {
+//            User user = userService.getUserByName(name);
+//            Long id = user.getId();
+//            if(user.getName().equals("admin")){
+//                return "redirect:/admin/" + id;
+//            }
+//        }
+//        return "redirect:/failedsignin";
+//    }
+
+
     @GetMapping("/admin")
     public ModelAndView adminDashbord() {
         ModelAndView mv = new ModelAndView();
@@ -150,6 +160,7 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
-
-
 }
+
+
+

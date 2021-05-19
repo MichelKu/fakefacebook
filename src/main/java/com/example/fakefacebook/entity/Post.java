@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 @Entity
 
-public class Post extends User {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,16 +20,9 @@ public class Post extends User {
     private User creator;
     private java.sql.Timestamp createdAt;
 
-
-
-
-
-
     public Timestamp getCreatedAt() {
         return createdAt;
     }
-
-
 
     public long getId() {
         return id;
@@ -47,13 +40,9 @@ public class Post extends User {
         this.message = message;
     }
 
-
-
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
-
-
 
     public void setCreator(User creator) {
         this.creator = creator;
@@ -63,15 +52,9 @@ public class Post extends User {
         return creator;
     }
 
-
-
-
     public Post() {
         super();
     }
-
-
-
 
     @Override
     public int hashCode() {

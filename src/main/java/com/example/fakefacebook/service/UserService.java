@@ -1,10 +1,8 @@
 package com.example.fakefacebook.service;
-
 import com.example.fakefacebook.entity.User;
 import com.example.fakefacebook.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -48,9 +46,6 @@ public class UserService {
 
 
 
-
-
-
     public User findUserById(long id) {
         return userRepository.findById(id).orElseThrow();
     }
@@ -70,13 +65,6 @@ public class UserService {
 
 
 
-
-
-
-
-
-
-
     //For admin to update user
     public void updateUser(User user) {
         User userDB = userRepository.findById(user.getId()).orElseThrow();
@@ -91,10 +79,6 @@ public class UserService {
     }
 
 
-
-
-
-
     public boolean authUser(String name, String password) {
         User dbUser = userRepository.findByName(name);
         if (dbUser == null) {
@@ -104,8 +88,6 @@ public class UserService {
         String passwordToCompare = createSecureHashPass(password, convertStringToByteForDB(dbUser.getSalt()));
         return dbUser.getPassword().equals(passwordToCompare);
     }
-
-
 
     public void saveUser(User user) {
         byte[] salt = generateSalt();
@@ -117,6 +99,4 @@ public class UserService {
             userRepository.save(user);
         }
     }
-
-
 }

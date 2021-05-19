@@ -29,29 +29,28 @@
 
 <tbody>
 <tr th:each="post: ${posts}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
     <td th:text="${post.id}"></td>
     <td th:text="${post.message}"></td>
     <td th:text="${post.creator}"></td>
     <td th:text="${post.createdAt}"></td>
-
-<!--    <td>-->
-<!--        <a th:href="@{'/edit/' + ${post.id}}">Update</a>-->
-<!--    </td>-->
-
-
-
-
     <td>
-<!--        <a th:if="${user.getId()} == ${post.creator.getId()}"href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>-->
-
-        <p th:text ="${user.getId()}" user.getId/>
-        <p th:text ="${post.creator.getId()}" post.creator.getId/>
-
+        <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>
     </td>
+
 </tr>
 </tbody>
 
+<br>
+<br>
+<br>
+<br>
 
+<span>
+        Return to my
+        <a th:href="@{/'userLoggedIn/' + ${user.getId()}}">profile</a>
+</span>
 
 
 </body>

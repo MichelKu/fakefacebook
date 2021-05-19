@@ -12,31 +12,22 @@
 </head>
 <body>
 
-<h1>Du är inloggad!</h1>
-
-<h1>Välkommen!</h1>
-
-
-<p th:text="${user.name}"></p>
+<h1>Hey there</h1>
+<h3 th:text="${user.name}"></h3>
 <img th:src="@{${user.img}}"/>
 
 <br>
 <br>
 
-
-<!--<form th:action="@{/submitPost}" method="POST">-->
-
-<!--    <textarea name="message" id="text-area" cols="30" rows="10"></textarea>-->
-
-<!--<button class="create-post" onclick="createPost()">Create post</button>-->
-
-<!--</form>-->
-
-
 <div>
     <a href="/submitPost">Create post</a>
 </div>
 
+<br>
+
+<span>
+        <a href="/signin">Sign out</a>
+</span>
 
 <br>
 <br>
