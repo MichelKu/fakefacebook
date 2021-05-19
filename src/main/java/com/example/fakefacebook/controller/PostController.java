@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.Entity;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -19,6 +21,8 @@ public class PostController {
     private UserService userService;
     @Autowired
     private PostService postService;
+
+
 
     @GetMapping("/submitPost")
         public String getPost(@ModelAttribute("post") Post post,@ModelAttribute("user") User user, Model model,

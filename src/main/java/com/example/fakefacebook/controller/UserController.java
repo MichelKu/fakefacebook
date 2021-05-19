@@ -1,11 +1,15 @@
 package com.example.fakefacebook.controller;
+
+import com.example.fakefacebook.entity.Post;
 import com.example.fakefacebook.entity.User;
 import com.example.fakefacebook.service.UserService;
+import com.example.fakefacebook.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -15,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PostService postService;
 
     /******************* FIRST PAGE OF THE APPLICATION - gives the user the ability to sign in or go to the sign up page ***************************/
 
@@ -46,9 +53,14 @@ public class UserController {
             Long id = user.getId();
             Cookie cookie = new Cookie("currentUserId", id.toString());
             response.addCookie(cookie);
-            return "redirect:/userLoggedIn/" + id;
-        }
 
+            if (user.getName().equals("admin")) {
+                return "redirect:/admin";
+            } else {
+                return "redirect:/userLoggedIn/" + id;
+            }
+        }
+        
         return "redirect:/failedsignin";
     }
 
@@ -106,33 +118,18 @@ public class UserController {
     }
 
 
-
     /****************************** ADMIN VIEW - gives admin ability to edit and delete users from database ****************************************/
     //Endpoint to handle view which shows a table with
     //all user entries in the database.
 
-//    @PostMapping("/loginAdmin")
-//    public String loginAdmin(@RequestParam("name") String name,
-//                            @RequestParam("password") String password
-//    ) {
-//
-//        if (userService.authUser(name, password)) {
-//            User user = userService.getUserByName(name);
-//            Long id = user.getId();
-//            if(user.getName().equals("admin")){
-//                return "redirect:/admin/" + id;
-//            }
-//        }
-//        return "redirect:/failedsignin";
-//    }
-
-
     @GetMapping("/admin")
-    public ModelAndView adminDashbord() {
+    public ModelAndView adminDashboard(@ModelAttribute("post") Post post) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("admin");
         List<User> users = userService.getAllUsers();
+        List<Post> posts = postService.getAllPosts();
         mv.addObject("users", users);
+        mv.addObject("posts", posts);
         return mv;
     }
 
@@ -160,6 +157,14 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
+
+    //Endpoint that handles deleting a specific post
+    @GetMapping("/deletePost/{id}")
+    public String deletePost(@PathVariable long id) {
+        postService.deletePost(id);
+        return "redirect:/admin";
+    }
+
 }
 
 

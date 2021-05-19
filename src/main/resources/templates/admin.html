@@ -33,5 +33,36 @@
     </tr>
     </tbody>
 </table>
+
+<br>
+<br>
+<br>
+
+<h1>Posts In Database</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Creator</th>
+        <th>Created at</th>
+        <th>Message</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post: ${posts}">
+        <td th:text="${post.id}"></td>
+        <td th:text="${post.getCreator().name}"></td>
+        <td th:text="${post.createdAt}"></td>
+        <td th:text="${post.message}"></td>
+        <td>
+            <a th:href="@{'/deletePost/' + ${post.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
 </body>
 </html>

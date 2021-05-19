@@ -10,46 +10,56 @@
 <body>
 
 
-<h1>HELLO!</h1>
+<h1>What's new?</h1>
+<br>
 
 <form th:action="@{/savePost}" th:object="${post}" method="POST">
-    <input type="text" placeholder="Message" th:field="*{message}">
+    <input type="text" placeholder="What's on your mind?" th:field="*{message}">
     <br>
     <br>
-    <input type="submit" value="Submit post">
+    <input type="submit" value="Publish">
 </form>
 
+<br>
+<br>
 
 <div th:each="post: ${posts}">
+
+    <h5>
+    <span th:text="${post.getCreator().name}" />
+    <span th:text="${post.createdAt}"/>
+    <em>says</em>
+    </h5>
     <p th:text="${post.message}" />
-    <p th:text="${post.getCreatedAt}"/>
-    <p th:text="${post.getCreator}"/>
+    <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>
+
+    <!--    <p th:text="${post.getCreatedAt}"/>-->
+<!--    <p th:text="${post.getCreator}"/>-->
+
 </div>
 
 
-<tbody>
-<tr th:each="post: ${posts}">
-    <td th:text="${user.id}"></td>
-    <td th:text="${user.name}"></td>
-    <td th:text="${post.id}"></td>
-    <td th:text="${post.message}"></td>
-    <td th:text="${post.creator}"></td>
-    <td th:text="${post.createdAt}"></td>
-    <td>
-        <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>
-    </td>
+<!--<table>-->
+<!--    <tbody>-->
+<!--    <tr th:each="post: ${posts}">-->
+<!--        <td th:text="${user.id}"></td>-->
+<!--        <td th:text="${user.name}"></td>-->
+<!--        <td th:text="${post.id}"></td>-->
+<!--        <td th:text="${post.message}"></td>-->
+<!--        <td th:text="${post.creator}"></td>-->
+<!--        <td th:text="${post.createdAt}"></td>-->
+<!--        <td>-->
+<!--            <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>-->
+<!--        </td>-->
 
-</tr>
-</tbody>
-
-<br>
-<br>
-<br>
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 <br>
 
 <span>
         Return to my
-        <a th:href="@{/'userLoggedIn/' + ${user.getId()}}">profile</a>
+        <a th:href="@{'/userLoggedIn/' + ${user.getId()}}">Profile</a>
 </span>
 
 
