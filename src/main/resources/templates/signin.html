@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+
+<form th:action="@{/loginUser}" method="POST">
+    <input type="text" placeholder="Username" th:name="name">
+    <input type="password" placeholder="Password" th:name="password">
+    <input type="submit" value="Sign in">
+</form>
+<br>
+<div>
+    <span>
+        No account? Sign up
+        <a href="/signup"> here</a>
+    </span>
+</div>
+
+<p th:text="${msg}"></p>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

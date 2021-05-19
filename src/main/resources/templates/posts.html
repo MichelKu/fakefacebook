@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+
+
+<h1>HELLO!</h1>
+
+<form th:action="@{/savePost}" th:object="${post}" method="POST">
+    <input type="text" placeholder="Message" th:field="*{message}">
+    <br>
+    <br>
+    <input type="submit" value="Submit post">
+</form>
+
+
+<div th:each="post: ${posts}">
+    <p th:text="${post.message}" />
+    <p th:text="${post.getCreatedAt}"/>
+    <p th:text="${post.getCreator}"/>
+</div>
+
+
+<tbody>
+<tr th:each="post: ${posts}">
+    <td th:text="${post.id}"></td>
+    <td th:text="${post.message}"></td>
+    <td th:text="${post.creator}"></td>
+    <td th:text="${post.createdAt}"></td>
+
+<!--    <td>-->
+<!--        <a th:href="@{'/edit/' + ${post.id}}">Update</a>-->
+<!--    </td>-->
+
+
+
+
+    <td>
+<!--        <a th:if="${user.getId()} == ${post.creator.getId()}"href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>-->
+
+        <p th:text ="${user.getId()}" user.getId/>
+        <p th:text ="${post.creator.getId()}" post.creator.getId/>
+
+    </td>
+</tr>
+</tbody>
+
+
+
+
+</body>
+</html>
