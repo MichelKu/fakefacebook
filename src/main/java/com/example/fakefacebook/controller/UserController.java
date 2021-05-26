@@ -38,29 +38,29 @@ public class UserController {
     @GetMapping("/failedsignin")
     public String failedlogin(@ModelAttribute("user") User user,
                               Model model) {
-        model.addAttribute("msg", "Your password or username is incorrect. Please try again!");
+        model.addAttribute("errorsigninmsg", "Your password or username is incorrect. Please try again!");
         return "signin";
     }
 
     @PostMapping("/loginUser")
-    public String loginUser(@RequestParam("name") String name,
+    public String loginUser(@RequestParam("username") String username,
                             @RequestParam("password") String password,
                             HttpServletResponse response
     ) {
 
-        if (userService.authUser(name, password)) {
-            User user = userService.getUserByName(name);
+        if (userService.authUser(username, password)) {
+            User user = userService.getUserByUsername(username);
             Long id = user.getId();
             Cookie cookie = new Cookie("currentUserId", id.toString());
             response.addCookie(cookie);
 
-            if (user.getName().equals("admin")) {
+            if (user.username.equals("admin")) {
                 return "redirect:/admin";
             } else {
                 return "redirect:/userLoggedIn/" + id;
             }
         }
-        
+
         return "redirect:/failedsignin";
     }
 
@@ -91,14 +91,14 @@ public class UserController {
     @GetMapping("/success")
     public String success(@ModelAttribute("user") User user,
                           Model model) {
-        model.addAttribute("msg", "Success! You account is now registered! Click the word ''here'' below to sign in.");
-        return "signup";
+        model.addAttribute("msg", "Success! You account is now registered!");
+        return "signin";
     }
 
     @GetMapping("/failed")
     public String failed(@ModelAttribute("user") User user,
                          Model model) {
-        model.addAttribute("msg", "Your passwords are not matching. Please try again!");
+        model.addAttribute("errorsignupmsg", "Your passwords are not matching. Please try again!");
         return "signup";
     }
 
@@ -121,17 +121,27 @@ public class UserController {
     /****************************** ADMIN VIEW - gives admin ability to edit and delete users from database ****************************************/
     //Endpoint to handle view which shows a table with
     //all user entries in the database.
-
     @GetMapping("/admin")
-    public ModelAndView adminDashboard(@ModelAttribute("post") Post post) {
+    public ModelAndView adminDashboard(@ModelAttribute("user") User user
+
+    ) {
+
+        if (user.username == "admin") {
+            ModelAndView mv = new ModelAndView();
+            mv.setViewName("admin");
+            List<User> users = userService.getAllUsers();
+            List<Post> posts = postService.getAllPosts();
+            mv.addObject("users", users);
+            mv.addObject("posts", posts);
+        } else {
+            ModelAndView mv = new ModelAndView();
+            mv.setViewName("profile");
+        }
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("admin");
-        List<User> users = userService.getAllUsers();
-        List<Post> posts = postService.getAllPosts();
-        mv.addObject("users", users);
-        mv.addObject("posts", posts);
         return mv;
     }
+
+
 
     //Endpoint for editing specific database entries
     //Their id field is used to query them from the database.

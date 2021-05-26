@@ -8,11 +8,39 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(name="username")
     public String name;
-    private String address;
     private String img;
+    public String lastName;
+    public String email;
+    public String username;
+    private String password;
+    private String salt;
+
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getImg() {
         return img;
@@ -21,13 +49,6 @@ public class User {
     public void setImg(String img) {
         this.img = img;
     }
-
-    private String password;
-
-    private String salt;
-
-
-
 
     public User() {
     }
@@ -46,14 +67,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPassword() {
@@ -77,6 +90,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
                 '}';
     }
 }

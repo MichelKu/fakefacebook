@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+i{
+    animation: fadeIn;
+    animation-duration: 5s;
+}
+
+
+.for-header{
+    padding-top: 40px;
+}
+
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../img/fakefacebookbackground.jpg");
+}
+
+.profile-body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../img/fakefacebookbackground.jpg");
+}
+
+
+.front-page-logo{
+    margin-top: 90px;
+}
+
+/* START STYLING OF PROFILE PAGE */
+.profile-container{
+    padding-top: 5rem;
+}
+
+
+.hey-there{
+    font-size: 6rem;
+}
+
+.name-profile{
+    font-size: 4rem;
+    font-style: italic;
+}
+
+.delete-my-account{
+    font-size: 1.5rem;
+}
+
+/* END STYLING OF PROFILE PAGE */
+
+
+
+/* START STYLING OF POSTS PAGE */
+
+img.front-page-logo{
+    position: sticky;
+    top: 100px
+}
+
+.write-something{
+    font-weight: 700;
+    font-style: italic;
+}
+
+.header-posts{
+    padding-top: 70px;
+    font-size: 5rem;
+}
+
+.posts-form{
+    position: sticky;
+    top: 120px;
+}
+
+#formGroupExampleInput{
+    max-width: 23rem;
+}
+
+/* END STYLING OF POSTS PAGE */
+
+
+
+
+/* START STYLING OF NAVBAR */
+
+.main-nav{
+    font-family: "Poppins";
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: #00e3ff70;
+}
+
+.main-nav .navbar-collapse .nav-item :hover{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+}
+
+.navbar-brand {
+    background: white;
+    border-radius: 20px;
+    border-image-width: auto;
+}
+
+.navbar-brand :hover{
+    font-size: 1.4rem;
+    color: white;
+}
+
+/* END STYLING OF NAVBAR */
+
+
+/* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE */
+/* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE *//* ALL STYLES I DID IN VS CODE */
+
+
+/************************** START STYLING OF SIGN UP PAGE  **************************/
+
+/* Setting the background image */
+.sign-in-body{
+    background-image: url("../img/fakefacebookbackground.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+/* Styling of big fakefacebooklogo */
+.big-logo{
+    animation: zoomInDown;
+    animation-duration: 3s;
+    max-height: 300px;
+}
+
+img:hover{
+    animation: jello;
+    animation-duration: 2s;
+}
+
+.success-text{
+    color: #42b72a;
+    font-weight: bold;
+    animation: fadeIn;
+    animation-duration: 3s;
+    font-size: 1.3rem;
+}
+
+.error-text{
+    color: red;
+    font-weight: bold;
+    animation: fadeIn;
+    animation-duration: 3s;
+    font-size: 1.3rem;
+}
+
+.error-signup-text{
+    color: red;
+    font-weight: bold;
+    animation: fadeIn;
+    animation-duration: 3s;
+    font-size: 1.3rem;
+}
+
+/* Username label abow username input */
+.input-username{
+    font-weight:700;
+    font-size: 2rem;
+    animation: fadeInTopLeft;
+    animation-duration: 3s;
+    font-style: italic;
+}
+
+/* Password label abow password input */
+.input-password{
+    max-width: 700px;
+    font-weight: 700;
+    font-style: italic;
+    animation: fadeInTopRight;
+    animation-duration: 3s;
+}
+
+/* Row for username input */
+.input-username-row{
+    animation: fadeInBottomLeft;
+    animation-duration: 3s;
+}
+
+/* Row for password input */
+.input-password-row{
+    animation: fadeInBottomRight;
+    animation-duration: 3s;
+}
+
+/* Sign in button */
+#sign-in-button{
+    animation: fadeInLeftBig;
+    animation-duration: 3s;
+}
+
+/* Forgot your password link */
+.forgot-your-password{
+    animation: flipInY;
+    animation-duration: 3s;
+}
+
+/* Create new account button */
+#create-new-account-btn{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    background-color: #42b72a;
+    color: white;
+    animation: fadeInRightBig;
+    animation-duration: 3s;
+}
+
+#create-new-account-btn:hover{
+    transform: scale(1.1);
+}
+
+/************************** END STYLING OF SIGN UP PAGE  **************************/
+
+
+
+
+/************************** START STYLING OF REGISTER PAGE  **************************/
+
+/* LABEL FOR USERNAME ROW */
+.register-username-label{
+    animation: fadeInLeftBig;
+    animation-duration: 2s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* USERNAME INPUT ROW */
+.username-input-row{
+    animation: fadeInLeftBig;
+    animation-duration: 1.5s;
+}
+
+/* LABEL FOR FIRST NAME ROW */
+.register-first-name-label{
+    animation: fadeInLeftBig;
+    animation-duration: 2.5s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* FIRST NAME INPUT ROW */
+.first-name-input-row{
+    animation: fadeInLeftBig;
+    animation-duration: 2s;
+}
+
+/* LABEL FOR LAST NAME ROW */
+.register-last-name-label{
+    animation: fadeInRightBig;
+    animation-duration: 2.5s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* LAST NAME INPUT ROW */
+.last-name-input-row{
+    animation: fadeInRightBig;
+    animation-duration: 2s;
+}
+
+/* LABEL EMAIL ROW */
+.register-email-label{
+    animation: fadeInLeftBig;
+    animation-duration: 3.7s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* EMAIL INPUT ROW */
+.email-input-row{
+    animation: fadeInLeftBig;
+    animation-duration: 3.5s;
+}
+
+/* LABEL FOR PASSWORD ROW */
+.register-password-label{
+    animation: fadeInLeftBig;
+    animation-duration: 4.2s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* PASSWORD INPUT ROW */
+.password-input-row{
+    animation: fadeInLeftBig;
+    animation-duration: 4s;
+}
+
+/* LABEL FOR CONFIRM PASSWORD ROW */
+.register-confirm-password-label{
+    animation: fadeInRightBig;
+    animation-duration: 2.2s;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* CONFIRM PASSWORD INPUT ROW */
+.confirm-password-input-row{
+    animation: fadeInRightBig;
+    animation-duration: 2.5s;
+}
+
+#sign-up-button{
+    animation: fadeInLeftBig;
+    animation-duration: 3s;
+}
+
+.account-span{
+    animation: fadeInUpBig;
+    animation-duration: 4s;
+}
+
+.sign-in-span{
+    animation: fadeInUpBig;
+    animation-duration: 3s;
+}
+
+/************************** END STYLING OF REGISTER PAGE  **************************/

@@ -12,12 +12,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
     @Column(columnDefinition="TEXT")
     private String message;
 
     @OneToOne
     private User creator;
+
     private java.sql.Timestamp createdAt;
 
     public Timestamp getCreatedAt() {

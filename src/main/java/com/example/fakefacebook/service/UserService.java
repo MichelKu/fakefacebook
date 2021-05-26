@@ -12,8 +12,6 @@ import java.util.List;
 @Service
 public class UserService {
 
-
-
     @Autowired
     private UserRepository userRepository;
 
@@ -44,8 +42,6 @@ public class UserService {
         return hashedSalt;
     }
 
-
-
     public User findUserById(long id) {
         return userRepository.findById(id).orElseThrow();
     }
@@ -54,22 +50,18 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User getUserById(Long id){
+    public User getUserById(long id){
        return userRepository.findById(id).orElseThrow();
     }
 
-    public User getUserByName(String name){
-        return userRepository.findByName(name);
+    public User getUserByUsername(String username){
+        return userRepository.findByUsername(username);
     }
-
-
-
 
     //For admin to update user
     public void updateUser(User user) {
         User userDB = userRepository.findById(user.getId()).orElseThrow();
         userDB.setName(user.getName());
-        userDB.setAddress(user.getAddress());
         userRepository.save(userDB);
     }
 
@@ -79,10 +71,10 @@ public class UserService {
     }
 
 
-    public boolean authUser(String name, String password) {
-        User dbUser = userRepository.findByName(name);
+    public boolean authUser(String username, String password) {
+        User dbUser = userRepository.findByUsername(username);
         if (dbUser == null) {
-            System.out.println("Your name is not correct " + name);
+            System.out.println("Your name is not correct " + username);
             return false;
         }
         String passwordToCompare = createSecureHashPass(password, convertStringToByteForDB(dbUser.getSalt()));

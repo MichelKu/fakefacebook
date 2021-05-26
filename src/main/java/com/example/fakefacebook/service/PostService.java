@@ -7,13 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class PostService {
 
     @Autowired
     private PostRepository postRepository;
-
 
     public void savePost(Post post) { postRepository.save(post); }
 

@@ -4,29 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <link th:href="@{/css/styles.css}" rel="stylesheet"  />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="shortcut icon" href="./FFBMINILOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
 
-
+<!-- DIV FOR BIG LOGO -->
 <form th:action="@{/saveUser}" th:object="${user}" method="POST">
-    <input type="text" placeholder="Username" th:field="*{name}">
-    <input type="text" placeholder="Address" th:field="*{address}">
-    <input type="password" placeholder="Password" th:field="*{password}">
-    <input type="password" placeholder="Confirm password" th:name="passwordTwo">
-    <input type="submit" value="Sign up">
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-lg-12 big-logo"
+            ><img src="fblogo.png" class="img-fluid" alt="fakefacebooklogo">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <p class="error-signup-text" th:text="${errorsignupmsg}"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- DIV FOR USERNAME COLUMN -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="inputUsername" class="col-form-label register-username-label">Username</label>
+                <i class="fa fa-user fa-lg fa-fw ml-3"></i>
+                <input type="text" class="form-control username-input-row" id="register-username-id" placeholder="Username" th:field="*{username}">
+            </div>
+        </div>
+    </div>
+
+
+<!-- DIV FOR FIRST NAME AND LAST NAME COLUMN -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-3">
+                <label for="inputUsername" class="col-form-label register-first-name-label">First name</label>
+                <i class="fa fa-user fa-lg fa-fw"></i>
+                <input type="text" class="form-control first-name-input-row" id="register-first-name-id" placeholder="First name" th:field="*{name}">
+            </div>
+            <div class="col-lg-6 pt-3">
+                <label for="inputUsername" class="col-form-label register-last-name-label">Last name</label>
+                <i class="fa fa-user fa-lg fa-fw"></i>
+                <input type="text" class="form-control last-name-input-row" id="register-last-name-id" placeholder="Last name" th:field="*{lastName}">
+            </div>
+        </div>
+    </div>
+
+
+<!-- DIV FOR EMAIL COLUMN -->
+
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col-lg-12 pt-2">
+                <label id="passwordlabel" for="email" class="col-form-label register-email-label" >Email</label>
+                <i class="fa fa-envelope fa-lg fa-fw"></i>
+                <input type="email" id="form-control-email" class="form-control email-input-row" placeholder="Email"  th:field="*{email}">
+
+            </div>
+        </div>
+    </div>
+
+
+<!-- DIV FOR PASSWORD AND CONFIRM PASSWORD COLUMN -->
+
+    <div class="container justify-content-center">
+        <div class="row">
+            <div class="col-lg-6 pt-2">
+                <label id="password-label" for="password" class="col-form-label register-password-label" >Password</label>
+                <i class="fa fa-lock fa-lg fa-fw"></i>
+                <input type="password" class="form-control password-input-row" placeholder="Password" th:field="*{password}">
+            </div>
+            <div class="col-lg-6 pt-2">
+                <label id="password-confirm-label" for="passwordTwo" class="col-form-label register-confirm-password-label">Confirm password</label>
+                <i class="fa fa-lock fa-lg fa-fw"></i>
+                <input type="password" class="form-control confirm-password-input-row" placeholder="Password" th:name="passwordTwo">
+            </div>
+        </div>
+    </div>
+
+
+<!-- DIV FOR SIGN UP BUTTON -->
+
+    <div class="container d-flex justify-content-center sign-in">
+        <div class="row">
+            <div class="col-lg-12 pt-5">
+                <button type="submit" id="sign-up-button" class="btn btn-block btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- DIV FOR FORGOT YOU PASSWORD LINK -->
+
+    <div class="container d-flex justify-content-center">
+        <div class="row">
+            <div class="col-lg-12 pt-4 forgot-password-col">
+                <span class="account-span"> Already have an account? </span>
+                <br>
+                <span class= "d-flex justify-content-center pt-2 sign-in-span">Sign in <a href="/signin" class="forgot-your-password pl-1">here</a></span>
+            </div>
+        </div>
+    </div>
 </form>
 
+<script src="script.js"></script>
 
-
-<p th:text="${msg}"></p>
-<span>
-    Already have an account?
-    Click
-    <a href="/signin">here</a>
-    to sign in
-</span>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

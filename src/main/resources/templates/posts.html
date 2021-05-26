@@ -4,64 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <link th:href="@{/css/styles.css}" rel="stylesheet"  />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="shortcut icon" href="./FFBMINILOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
 
+<!--NAVBAR START-->
 
-<h1>What's new?</h1>
-<br>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top main-nav">
+    <a class="navbar-brand" th:href="@{'/userLoggedIn/' + ${user.getId()}}"><img src="FFBMINILOGO.png" alt="ffbminilogo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<form th:action="@{/savePost}" th:object="${post}" method="POST">
-    <input type="text" placeholder="What's on your mind?" th:field="*{message}">
-    <br>
-    <br>
-    <input type="submit" value="Publish">
-</form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{'/userLoggedIn/' + ${user.getId()}}">My profile<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Create post<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/signin">Sign out<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<br>
-<br>
 
-<div th:each="post: ${posts}">
 
-    <h5>
-    <span th:text="${post.getCreator().name}" />
-    <span th:text="${post.createdAt}"/>
-    <em>says</em>
-    </h5>
-    <p th:text="${post.message}" />
-    <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>
+<!--NAVBAR END-->
 
-    <!--    <p th:text="${post.getCreatedAt}"/>-->
-<!--    <p th:text="${post.getCreator}"/>-->
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12 "><img class="front-page-logo" src="fblogoXsmall.png" alt="fakefacebook-logo"></div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 d-flex justify-content-center" ><h1 class="header-posts text-center">What's new?</h1></div>
+    </div>
 </div>
 
 
-<!--<table>-->
-<!--    <tbody>-->
-<!--    <tr th:each="post: ${posts}">-->
-<!--        <td th:text="${user.id}"></td>-->
-<!--        <td th:text="${user.name}"></td>-->
-<!--        <td th:text="${post.id}"></td>-->
-<!--        <td th:text="${post.message}"></td>-->
-<!--        <td th:text="${post.creator}"></td>-->
-<!--        <td th:text="${post.createdAt}"></td>-->
-<!--        <td>-->
-<!--            <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete</a>-->
-<!--        </td>-->
 
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<br>
 
-<span>
-        Return to my
-        <a th:href="@{'/userLoggedIn/' + ${user.getId()}}">Profile</a>
-</span>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-4 col-sm-6 col-xs-12 pt-3">
+            <form class="posts-form" th:action="@{/savePost}" th:object="${post}" method="POST">
+                <div class="message-form" >
+                    <label for="formGroupExampleInput" class="write-something pt-2">Write something</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" th:field="*{message}" placeholder="What's on your mind?">
+                </div>
+                <div class="pt-3">
+                <button type="submit" class="btn btn-primary message-form-button">Publish</button>
+                </div>
+            </form>
+        </div>
+
+
+    <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 pt-5 mx-auto">
+        <div class="posts" th:each="post: ${posts}">
+            <h5>
+                <span th:text="${post.getCreator().username}" />
+                <em>says</em>
+            </h5>
+            <br>
+            <p th:text="${post.message}" />
+            <br>
+            <span th:text="${post.createdAt}"/>
+            <a th:if="${user.getId()} == ${post.creator.getId()}" th:href="@{'/deleteMyPost/' + ${post.id}}">Delete my post</a>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+</div>
 
 </body>
 </html>
